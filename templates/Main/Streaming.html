@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+    공부방
+{% endblock %}
+{% block content %}
+
+
+    <div class="container">
+        <div class="wrap">
+            <h2 class="title-center"> 공부방</h2>
+            <form class="form-area" method="post" action="/index/">
+
+                <div class="card">
+                    <img src="{% url 'video_feed' %}">
+                </div>
+                <hr>
+                <div style="float: right">
+                    <button type="submit" class="btn btn-primary">공부 종료</button>
+                    <a href="/study" class="btn btn-secondary">일시정지</a>
+                </div>
+            </form>
+
+        </div>
+    </div>
+{% endblock %}

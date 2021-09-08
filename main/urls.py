@@ -3,7 +3,8 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('stream/', views.index, name='index'),
-    path('study/', views.study_view, name='study'),
-    path('video_feed/', views.video_feed, name='video_feed'),
+    path('lecture_study/', views.lecture_study, name='lecture_study'),
+    path('self_study/', views.self_study, name='self_study'),
+    path('video_feed_face/', views.video_feed_face, name='video_feed_face'),
+    path('video_feed_object/', views.video_feed_object, name='video_feed_object'),
     ]

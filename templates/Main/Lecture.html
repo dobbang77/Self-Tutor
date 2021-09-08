@@ -11,12 +11,10 @@
     <div class="container">
         <div class="wrap">
             <h2 class="title-center"> 공부방</h2>
-            <form class="form-area" method="post" action="/study/">
+            <form class="form-area" method="post" action="/index/">
 
-                <div>
-                    <script defer src="/static/js/Camera.js"></script>
-                    <video id="video" width="720" height="560" autoplay muted></video>
-
+                <div class="card">
+                    <img src="{% url 'video_feed_face' %}">
                 </div>
                 <hr>
                 <div style="float: right">

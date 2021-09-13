@@ -6,23 +6,35 @@
     공부방
 {% endblock %}
 {% block content %}
-
+    <link rel="stylesheet" href="{% static 'css/Timer.css' %}">
+    <script src="{% static 'js/Timer.js' %}"></script>
 
     <div class="container">
         <div class="wrap">
             <h2 class="title-center"> 자습모드</h2>
             <form class="form-area" method="post" action="/self_study/">
-
+                {% csrf_token %}
                 <div class="card">
                     <img src="{% url 'video_feed_object' %}">
                 </div>
-                <hr>
-                <div style="float: right">
-                    <button type="submit" class="btn btn-primary">공부 종료</button>
-                    <a href="/study" class="btn btn-secondary">일시정지</a>
-                </div>
             </form>
-
+            <hr>
         </div>
     </div>
+
+    <center>
+    <h1 id="clock" style="color:gray;"></h1>
+</center>
+    <div class="containerMrs">
+        <p id="output"><b>00:00:00</b></p>
+        <div id="controls" align="center">
+            <button id="startPause" onclick="startPause()"><b id="start">시작</b></button>
+            <a href="/result"> <button onclick="reset()" id="reset"><b id="reset">종료</b></button> </a>
+        </div>
+    </div>
+    <center>
+        <h1 id=stopTime></h1>
+        <h1 id="breaktime"></h1>
+    </center>
+    <script src="{% static 'js/Clock.js' %}"></script>
 {% endblock %}

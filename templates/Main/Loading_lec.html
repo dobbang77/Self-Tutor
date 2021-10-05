@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    수업대기방
+{% endblock %}
+
+
+{% block content %}
+  <body>
+        <div class="container">
+            <center>
+                <h2 class="title-center">{{ user.username }}님 오늘의 공부를 시작하실 준비가 되셨나요?😆</h2>
+                <div class="wrap">
+                    <form class="form-area" method="post" action="/loading_sel/">
+                    <div class="card">
+                        <img src="{% url 'video_feed_face' %}">
+                    </div>
+                    </form>
+                </div>
+                <h5> 강의모드 시 주의사항 같은 거 열거</h5>
+            </center>
+        </div >
+        <div class="title-center">
+            <a href="/lecture_study/" class="btn btn-primary">공부 시작하러 가기!</a>
+        </div>
+    </body>
+
+{% endblock %}

@@ -1,6 +1,26 @@
 from django.shortcuts import render
-from django.http import StreamingHttpResponse
-from main.camera import VideoCamera
+from django.http import StreamingHttpResponse, HttpResponse
+from main.camera import VideoCamera, TimeCount
+
+
+# 자습모드 로딩
+def loading_sel(request):
+    if request.method == 'GET':
+        user = request.user.is_authenticated
+        if user:
+            return render(request, 'main/Loading_sel.html')
+        else:
+            return render(request, 'user/signin.html')
+
+
+# 자습모드 로딩
+def loading_lec(request):
+    if request.method == 'GET':
+        user = request.user.is_authenticated
+        if user:
+            return render(request, 'main/Loading_lec.html')
+        else:
+            return render(request, 'user/signin.html')
 
 
 def self_study(request):
@@ -35,6 +55,13 @@ def gen2(camera):
                b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
 
 
+def gen3(camera):
+    while True:
+        frame = camera.time_count()
+        yield (b'--frame\r\n'
+               b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
+
+
 # 인강모드
 def video_feed_face(request):
     return StreamingHttpResponse(gen1(VideoCamera()), content_type='multipart/x-mixed-replace; boundary=frame')
@@ -43,3 +70,7 @@ def video_feed_face(request):
 # 자습모드
 def video_feed_object(request):
     return StreamingHttpResponse(gen2(VideoCamera()), content_type='multipart/x-mixed-replace; boundary=frame')
+
+
+def video_time_count(request):
+    return StreamingHttpResponse(gen3(TimeCount()), content_type='multipart/x-mixed-replace; boundary=frame')

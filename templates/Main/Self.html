@@ -1,13 +1,12 @@
 {% extends 'base.html' %}
 {% load static %}
 
-
 {% block title %}
     공부방
 {% endblock %}
 {% block content %}
-    <link rel="stylesheet" href="{% static 'css/Timer.css' %}">
-    <script src="{% static 'js/Timer.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'Timer.css' %}">
+    <script src="{% static 'Timer.js' %}"></script>
 
     <div class="container">
         <div class="wrap">
@@ -36,5 +35,5 @@
         <h1 id=stopTime></h1>
         <h1 id="breaktime"></h1>
     </center>
-    <script src="{% static 'js/Clock.js' %}"></script>
+    <script src="{% static 'Clock.js' %}"></script>
 {% endblock %}
